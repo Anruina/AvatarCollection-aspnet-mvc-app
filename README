@@ -3,17 +3,24 @@
 NOTE: Solution heet ETickets omdat ik eerst een movie cinema app had gemaakt en later dit heb omgebouwd ipv een nieuw project heb aangemaakt door tijdsgebrek.
 Basis MVC APP
 
+Momenteel:
 - CRUD geimplementeerd voor Actors(Ook wel Characters genoemd)
 - handmatig crud gemaakt zonder scaffold.
 - Dit moet nog geimplementeerd worden voor overige functies
+
+Overige functies die niet gelukt zijn:
 - Moet nog een login functie worden gemaakt
 - er moet nog gemaakt worden dat bij het inloggen een gebruiker een persoonlijke collectie te kan maken
 - API moet nog worden gemaakt
 
 
-### in andere applicaties heb ik geprobeerd een API te maken en een Library te maken die los staat van de MVC.
+NOTE: in andere applicaties heb ik geprobeerd een API te maken en een Library te maken die los staat van de MVC.
 
-Api is niet gelukt. 
+Api is niet gelukt aangezien ik vast liep bij een error en niet genoeg tijd om dit op te lossen, samen met miel overlegd om dit alsnog in te sturen. 
 maken van een aparte library met reference wel, dit wou ik doen voor de herbruikbaarheid van code maar had hier uiteindelijk niet genoeg tijd voor: 
+
 Zie het volgende Github project voor aparte library:
 https://github.com/Anruina/MiniAvatarCollection
+
+Zie het volgende github project voor de mislukte api:
+https://github.com/Anruina/AvatarCollection
