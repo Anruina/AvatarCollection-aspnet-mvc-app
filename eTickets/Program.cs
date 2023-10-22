@@ -1,3 +1,7 @@
+using eTickets.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
+
 namespace eTickets
 {
     public class Program
@@ -5,6 +9,12 @@ namespace eTickets
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            //add connectionstring to db
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            //create connection
+            builder.Services.AddDbContext<AppDbContext>(options 
+                => options.UseSqlServer(connectionString));
+            
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -19,6 +29,7 @@ namespace eTickets
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -30,7 +41,12 @@ namespace eTickets
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            //seed database
+            AppDbInitalizer.Seed(app);
+
             app.Run();
+
+           
         }
     }
 }
