@@ -1,4 +1,5 @@
 using eTickets.Data;
+using eTickets.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
@@ -14,6 +15,9 @@ namespace eTickets
             //create connection
             builder.Services.AddDbContext<AppDbContext>(options 
                 => options.UseSqlServer(connectionString));
+
+            //services configuration
+            builder.Services.AddScoped<IActorsService, ActorsService>();
             
 
             // Add services to the container.
