@@ -1,0 +1,19 @@
+##README##
+
+
+Basis MVC APP
+
+- CRUD geimplementeerd voor Actors(Ook wel Characters genoemd)
+- handmatig crud gemaakt zonder scaffold.
+- Dit moet nog geimplementeerd worden voor overige functies
+- Moet nog een login functie worden gemaakt
+- er moet nog gemaakt worden dat bij het inloggen een gebruiker een persoonlijke collectie te kan maken
+- API moet nog worden gemaakt
+
+
+### in andere applicaties heb ik geprobeerd een API te maken en een Library te maken die los staat van de MVC.
+
+Api is niet gelukt. 
+maken van een aparte library met reference wel, dit wou ik doen voor de herbruikbaarheid van code maar had hier uiteindelijk niet genoeg tijd voor: 
+Zie het volgende Github project voor aparte library:
+https://github.com/Anruina/MiniAvatarCollection
