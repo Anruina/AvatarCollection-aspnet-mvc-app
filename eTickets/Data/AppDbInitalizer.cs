@@ -1,9 +1,9 @@
-﻿using eTickets.Data.Enums;
-using eTickets.Models;
+﻿using AvatarCollections.Data.Enums;
+using AvatarCollections.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eTickets.Data
+namespace AvatarCollections.Data
 {
     public class AppDbInitalizer
     {
@@ -19,40 +19,28 @@ namespace eTickets.Data
 
                 //basic data will be displayed if database is empty.
 
-                if (!context.Cinemas.Any())
+                if (!context.Shows.Any())
                 {
-                    context.Cinemas.AddRange(new List<Cinema>()
+                    context.Shows.AddRange(new List<Show>()
                     {
-                        new Cinema()
+                        new Show()
                         {
-                            Name = "Cinema 1",
+                            Name = "Book 1 - Water",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Description = "Pilot Season 1 Avatar the Last Airbender"
                         },
-                        new Cinema()
+                        new Show()
                         {
-                            Name = "Cinema 2",
+                            Name = "Book 2 - Earth",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Description = "Follow up season Earth, follows Team Avatar through the Earth Kingdom"
                         },
-                        new Cinema()
+                        new Show()
                         {
-                            Name = "Cinema 3",
+                            Name = "Book 3 - Fire",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
-                            Description = "This is the description of the first cinema"
-                        },
-                        new Cinema()
-                        {
-                            Name = "Cinema 4",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
-                            Description = "This is the description of the first cinema"
-                        },
-                        new Cinema()
-                        {
-                            Name = "Cinema 5",
-                            Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
-                            Description = "This is the description of the first cinema"
-                        },
+                            Description = "Final season, follows Team Avatars attempt at ending the 100 year war."
+                        }
                     });
 
                     //changes will be saved in db
@@ -65,33 +53,33 @@ namespace eTickets.Data
                     {
                         new Actor()
                         {
-                            FullName = "Actor 1",
-                            Bio = "This is the Bio of the first actor",
+                            FullName = "Katara",
+                            Bio = "Waterbending Master",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
 
                         },
                         new Actor()
                         {
-                            FullName = "Actor 2",
-                            Bio = "This is the Bio of the second actor",
+                            FullName = "Sokka",
+                            Bio = "SwordMaster & Planner ",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-2.jpeg"
                         },
                         new Actor()
                         {
-                            FullName = "Actor 3",
-                            Bio = "This is the Bio of the second actor",
+                            FullName = "Prince Zuko",
+                            Bio = "Fire Nation Prince, Firebender",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-3.jpeg"
                         },
                         new Actor()
                         {
-                            FullName = "Actor 4",
-                            Bio = "This is the Bio of the second actor",
+                            FullName = "Aang",
+                            Bio = "The last airbender, Airbending Master and the Avatar",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-4.jpeg"
                         },
                         new Actor()
                         {
-                            FullName = "Actor 5",
-                            Bio = "This is the Bio of the second actor",
+                            FullName = "Toph",
+                            Bio = "Greatest Earthbender in the world!",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-5.jpeg"
                         }
                     });
@@ -104,219 +92,66 @@ namespace eTickets.Data
                     {
                         new Producer()
                         {
-                            FullName = "Producer 1",
-                            Bio = "This is the Bio of the first actor",
+                            FullName = "Michael Dante DiMartino",
+                            Bio = "Co-creator of Avatar the last airbender",
                             ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
 
                         },
                         new Producer()
                         {
-                            FullName = "Producer 2",
-                            Bio = "This is the Bio of the second actor",
+                            FullName = "Bryan Konietzko",
+                            Bio = "Co-creator of Avatar the last airbender",
                             ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-2.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-3.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-4.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-5.jpeg"
                         }
                     });
                     context.SaveChanges();
                 }
-                //Movies
-                if (!context.Movies.Any())
+                //Collectables
+                if (!context.Collectables.Any())
                 {
-                    context.Movies.AddRange(new List<Movie>()
+                    context.Collectables.AddRange(new List<Collectable>()
                     {
-                        new Movie()
+                        new Collectable()
                         {
-                            Name = "Life",
-                            Description = "This is the Life movie description",
+                            Name = "Katara Funko Pop",
+                            Description = "PVC Figuring of Katara",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(10),
-                            CinemaId = 3,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Documentary
+                            ShowId = 3,
+                            ProducerId = 1,
+                            Category = Category.Figurine
                         },
-                        new Movie()
+                        new Collectable()
                         {
-                            Name = "The Shawshank Redemption",
-                            Description = "This is the Shawshank Redemption description",
+                            Name = "Toph Beifong's Metalbending Academy",
+                            Description = "Short comics about Toph forming her own Academy focused on Metalbending.",
                             Price = 29.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
+                            ImageURL = "https://m.media-amazon.com/images/I/51Bfa3K8GoL._SY445_SX342_.jpg",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(3),
-                            CinemaId = 1,
+                            ShowId = 2,
                             ProducerId = 1,
-                            MovieCategory = MovieCategory.Action
+                            Category = Category.Book
                         },
-                        new Movie()
+                        new Collectable()
                         {
-                            Name = "Ghost",
-                            Description = "This is the Ghost movie description",
-                            Price = 39.50,
+                            Name = "Smoke and Shadow",
+                            Description = "Library Edition that gathers a 3 part comic adventure.",
+                            Price = 59.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(7),
-                            CinemaId = 4,
-                            ProducerId = 4,
-                            MovieCategory = MovieCategory.Horror
-                        },
-                        new Movie()
-                        {
-                            Name = "Race",
-                            Description = "This is the Race movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-5),
-                            CinemaId = 1,
+                            ShowId = 3,
                             ProducerId = 2,
-                            MovieCategory = MovieCategory.Documentary
-                        },
-                        new Movie()
-                        {
-                            Name = "Scoob",
-                            Description = "This is the Scoob movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-2),
-                            CinemaId = 1,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Cartoon
-                        },
-                        new Movie()
-                        {
-                            Name = "Cold Soles",
-                            Description = "This is the Cold Soles movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
-                            StartDate = DateTime.Now.AddDays(3),
-                            EndDate = DateTime.Now.AddDays(20),
-                            CinemaId = 1,
-                            ProducerId = 5,
-                            MovieCategory = MovieCategory.Drama
+                            Category = Category.Book
                         }
                     });
                     context.SaveChanges();
                 }
-                //Actors & Movies
-                if (!context.Actors_Movies.Any())
-                {
-                    context.Actors_Movies.AddRange(new List<Actor_Movie>()
-                    {
-                        new Actor_Movie()
-                        {
-                            ActorID = 1,
-                            MovieID = 1
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 3,
-                            MovieID = 1
-                        },
 
-                         new Actor_Movie()
-                        {
-                            ActorID = 1,
-                            MovieID = 2
-                        },
-                         new Actor_Movie()
-                        {
-                            ActorID = 4,
-                            MovieID = 2
-                        },
-
-                        new Actor_Movie()
-                        {
-                            ActorID = 1,
-                            MovieID = 3
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 2,
-                            MovieID = 3
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 5,
-                            MovieID = 3
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorID = 2,
-                            MovieID = 4
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 3,
-                            MovieID = 4
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 4,
-                            MovieID = 4
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorID = 2,
-                            MovieID = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 3,
-                            MovieID = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 4,
-                            MovieID = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 5,
-                            MovieID = 5
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorID = 3,
-                            MovieID = 6
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 4,
-                            MovieID = 6
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorID = 5,
-                            MovieID = 6
-                        },
-                    });
-                    context.SaveChanges();
-                }
+                
             }
         }
 

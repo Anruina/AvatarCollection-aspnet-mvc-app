@@ -12,8 +12,8 @@ using AvatarCollections.Data;
 namespace AvatarCollections.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231022081556_initial")]
-    partial class initial
+    [Migration("20231022223934_ChangeDataMigration")]
+    partial class ChangeDataMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,22 +50,22 @@ namespace AvatarCollections.Migrations
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Actor_Collectable", b =>
                 {
                     b.Property<int>("ActorID")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieID")
+                    b.Property<int>("CollectableID")
                         .HasColumnType("int");
 
-                    b.HasKey("ActorID", "MovieID");
+                    b.HasKey("ActorID", "CollectableID");
 
-                    b.HasIndex("MovieID");
+                    b.HasIndex("CollectableID");
 
-                    b.ToTable("Actors_Movies");
+                    b.ToTable("Actors_Collectables");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Cinema", b =>
+            modelBuilder.Entity("eTickets.Models.Collectable", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,50 +73,19 @@ namespace AvatarCollections.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cinemas");
-                });
-
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CinemaId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MovieCategory")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
@@ -125,16 +94,19 @@ namespace AvatarCollections.Migrations
                     b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ShowId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CinemaId");
-
                     b.HasIndex("ProducerId");
 
-                    b.ToTable("Movies");
+                    b.HasIndex("ShowId");
+
+                    b.ToTable("Collectables");
                 });
 
             modelBuilder.Entity("eTickets.Models.Producer", b =>
@@ -162,7 +134,32 @@ namespace AvatarCollections.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Show", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Logo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Shows");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Actor_Collectable", b =>
                 {
                     b.HasOne("eTickets.Models.Actor", "Actor")
                         .WithMany("Actors_Movies")
@@ -170,34 +167,34 @@ namespace AvatarCollections.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eTickets.Models.Movie", "Movie")
+                    b.HasOne("eTickets.Models.Collectable", "Collectable")
                         .WithMany("Actors_Movies")
-                        .HasForeignKey("MovieID")
+                        .HasForeignKey("CollectableID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Actor");
 
-                    b.Navigation("Movie");
+                    b.Navigation("Collectable");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Collectable", b =>
                 {
-                    b.HasOne("eTickets.Models.Cinema", "Cinema")
-                        .WithMany("Movies")
-                        .HasForeignKey("CinemaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("eTickets.Models.Producer", "Producer")
-                        .WithMany("Movies")
+                        .WithMany("Collectables")
                         .HasForeignKey("ProducerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cinema");
+                    b.HasOne("eTickets.Models.Show", "Show")
+                        .WithMany("Collectables")
+                        .HasForeignKey("ShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Producer");
+
+                    b.Navigation("Show");
                 });
 
             modelBuilder.Entity("eTickets.Models.Actor", b =>
@@ -205,19 +202,19 @@ namespace AvatarCollections.Migrations
                     b.Navigation("Actors_Movies");
                 });
 
-            modelBuilder.Entity("eTickets.Models.Cinema", b =>
-                {
-                    b.Navigation("Movies");
-                });
-
-            modelBuilder.Entity("eTickets.Models.Movie", b =>
+            modelBuilder.Entity("eTickets.Models.Collectable", b =>
                 {
                     b.Navigation("Actors_Movies");
                 });
 
             modelBuilder.Entity("eTickets.Models.Producer", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("Collectables");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Show", b =>
+                {
+                    b.Navigation("Collectables");
                 });
 #pragma warning restore 612, 618
         }

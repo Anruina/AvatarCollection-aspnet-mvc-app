@@ -12,6 +12,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
+      "launchUrl": "Collectables",
       "applicationUrl": "http://localhost:5103",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,6 +22,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
+      "launchUrl": "Collectables",
       "applicationUrl": "https://localhost:7138;http://localhost:5103",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -29,7 +31,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "Movies",
+      "launchUrl": "Collectables",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

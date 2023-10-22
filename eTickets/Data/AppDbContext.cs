@@ -1,8 +1,8 @@
-﻿using eTickets.Models;
+﻿using AvatarCollections.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 
-namespace eTickets.Data
+namespace AvatarCollections.Data
 {
     public class AppDbContext : DbContext
     {
@@ -14,23 +14,23 @@ namespace eTickets.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //define FK
-            modelBuilder.Entity<Actor_Movie>().HasKey(am => new
+            modelBuilder.Entity<Actor_Collectable>().HasKey(am => new
             {
                 am.ActorID,
-                am.MovieID
+                am.CollectableID
             });
 
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieID);
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorID);
+            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Collectable).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.CollectableID);
+            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorID);
 
             base.OnModelCreating(modelBuilder);
         }
 
         //table names
         public DbSet<Actor> Actors { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Actor_Movie> Actors_Movies { get; set; }
-        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Collectable> Collectables { get; set; }
+        public DbSet<Actor_Collectable> Actors_Collectables { get; set; }
+        public DbSet<Show> Shows { get; set; }
         public DbSet<Producer> Producers { get; set; }
 
     }

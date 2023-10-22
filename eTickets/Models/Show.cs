@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 
-namespace eTickets.Models
+namespace AvatarCollections.Models
 {
-    public class Cinema
+    public class Show
     {
         [Key]
         public int Id { get; set; }
 
-        [Display(Name= "Cinema Logo")]
+        [Display(Name= "Show Logo")]
         public string Logo { get; set; }
-        [Display(Name = "Cinema Name")]
+        [Display(Name = "Show Name")]
         public string Name { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
 
 
         //Relationship
-        public List<Movie> Movies { get; set; }
+        public List<Collectable> Collectables { get; set; }
     }
 }

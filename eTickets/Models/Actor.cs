@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks.Dataflow;
 
-namespace eTickets.Models
+namespace AvatarCollections.Models
 {
     public class Actor
     {
@@ -10,19 +10,19 @@ namespace eTickets.Models
 
         [Display(Name = "Profile Picture")]
         [Required(ErrorMessage = "Profile Picture is required.")]
-        public string ProfilePictureUrl { get; set; }
+        public string? ProfilePictureUrl { get; set; }
 
         [Required(ErrorMessage = "Full Name is required.")]
         [Display(Name = "Full Name")]
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
 
         [Display(Name = "Biography")]
         [Required(ErrorMessage = "Biography is required.")]
-        public string Bio { get; set; }
+        public string? Bio { get; set; }
 
 
         //Relationship
-        public List<Actor_Movie>? Actors_Movies { get; set; }
+        public List<Actor_Collectable>? Actors_Movies { get; set; }
 
     }
 }

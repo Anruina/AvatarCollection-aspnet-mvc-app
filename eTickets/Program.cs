@@ -1,9 +1,9 @@
-using eTickets.Data;
-using eTickets.Data.Services;
+using AvatarCollections.Data;
+using AvatarCollections.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
-namespace eTickets
+namespace AvatarCollections
 {
     public class Program
     {

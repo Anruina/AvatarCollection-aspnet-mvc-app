@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eTickets.Models
+namespace AvatarCollections.Models
 {
     public class Producer
     {
@@ -18,6 +18,6 @@ namespace eTickets.Models
 
 
         //Relationship
-        public List<Movie> Movies { get; set; }
+        public List<Collectable> Collectables { get; set; }
     }
 }

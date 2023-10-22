@@ -12,8 +12,8 @@ using AvatarCollections.Data;
 namespace AvatarCollections.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231022081556_initial")]
-    partial class initial
+    [Migration("20231022203219_AllowNull")]
+    partial class AllowNull
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,21 +102,18 @@ namespace AvatarCollections.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MovieCategory")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")

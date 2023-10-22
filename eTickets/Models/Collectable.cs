@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using System.ComponentModel.DataAnnotations;
-using eTickets.Data.Enums;
+using AvatarCollections.Data.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eTickets.Models
+namespace AvatarCollections.Models
 {
-    public class Movie
+    public class Collectable
     {
         [Key]
         public int Id { get; set; }
@@ -17,17 +17,17 @@ namespace eTickets.Models
         public string? ImageURL { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public MovieCategory MovieCategory { get; set; }
+        public Category Category { get; set; }
 
 
         //relationship
-        public List<Actor_Movie>? Actors_Movies { get; set; }
+        public List<Actor_Collectable>? Actors_Movies { get; set; }
 
         //cinema
 
-        public int CinemaId { get; set; }
-        [ForeignKey("CinemaId")]
-        public Cinema? Cinema { get; set; }
+        public int ShowId { get; set; }
+        [ForeignKey("ShowId")]
+        public Show? Show { get; set; }
 
         //Producer
 

@@ -1,19 +1,19 @@
-﻿using eTickets.Models;
+﻿using AvatarCollections.Models;
 
-namespace eTickets.Data.Services
+namespace AvatarCollections.Data.Services
 {
     //get data from DB
     public interface IActorsService
     {
         //read
-        Task<IEnumerable<Actor>> GetAll();
+        Task<IEnumerable<Actor>> GetAllAsync();
         //get by id
-        Actor GetById(int id);
+        Task<Actor> GetByIdAsync(int id);
         ///create
-        void Add(Actor actor);
+        Task AddAsync(Actor actor);
         //update
-        Actor Update(int id, Actor newActor);
+        Task<Actor> UpdateAsync(int id, Actor newActor);
         //delete
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

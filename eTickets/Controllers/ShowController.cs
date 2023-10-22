@@ -1,22 +1,22 @@
 ﻿using AvatarCollections.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AvatarCollections.Controllers
 {
-    public class ProducersController : Controller
+    public class ShowController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ProducersController(AppDbContext context)
+        public ShowController(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Producers.ToListAsync();
-            return View(allProducers);
+            var allShows = await _context.Shows.ToListAsync();
+            return View(allShows);
         }
     }
 }
