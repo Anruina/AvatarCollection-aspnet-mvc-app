@@ -20,8 +20,8 @@ namespace AvatarCollections.Data
                 am.CollectableID
             });
 
-            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Collectable).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.CollectableID);
-            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorID);
+            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Collectable).WithMany(am => am.Actors_Collectables).HasForeignKey(m => m.CollectableID);
+            modelBuilder.Entity<Actor_Collectable>().HasOne(m => m.Actor).WithMany(am => am.Actors_Collectables).HasForeignKey(m => m.ActorID);
 
             base.OnModelCreating(modelBuilder);
         }

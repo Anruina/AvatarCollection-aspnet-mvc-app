@@ -22,7 +22,7 @@ namespace AvatarCollections.Models
 
 
         //Relationship
-        public List<Actor_Collectable>? Actors_Movies { get; set; }
+        public List<Actor_Collectable>? Actors_Collectables { get; set; }
 
     }
 }
